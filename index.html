@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Are You a Timmy? Quiz</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
@@ -14,59 +12,38 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', 'Comic Sans MS', sans-serif;
+            background: #3498db;
             min-height: 100vh;
             padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .container {
-            max-width: 700px;
-            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 3px solid #2c3e50;
         }
 
         .header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 40px 30px;
+            background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%);
+            padding: 25px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            border-bottom: 3px solid #a93226;
+            border-radius: 7px 7px 0 0;
         }
 
         .header h1 {
             color: white;
-            font-size: 36px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
+            font-size: 28px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            font-weight: bold;
         }
 
         .content {
-            padding: 40px 30px;
+            padding: 25px;
         }
 
         .screen {
@@ -75,22 +52,16 @@
 
         .screen.active {
             display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .stats-bar {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 25px;
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: space-around;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #bdc3c7;
         }
 
         .stat-item {
@@ -98,276 +69,250 @@
         }
 
         .stat-label {
-            font-size: 12px;
-            color: #666;
+            font-size: 11px;
+            color: #7f8c8d;
             text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: bold;
         }
 
         .stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 20px;
+            font-weight: bold;
+            color: #e74c3c;
         }
 
         .menu-btn, .answer-btn, .submit-btn, .back-btn {
             width: 100%;
-            padding: 18px 24px;
-            margin: 12px 0;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #2c3e50;
+            border-radius: 5px;
+            font-size: 15px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
         }
 
         .menu-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(180deg, #3498db 0%, #2980b9 100%);
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.2);
-            transition: left 0.5s ease;
-        }
-
-        .menu-btn:hover::before {
-            left: 100%;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
         }
 
         .menu-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(180deg, #5dade2 0%, #3498db 100%);
+        }
+
+        .menu-btn:active {
+            transform: translateY(2px);
         }
 
         .answer-btn {
-            background: white;
-            color: #333;
-            border: 3px solid #e8eaf6;
+            background: linear-gradient(180deg, #ffffff 0%, #ecf0f1 100%);
+            color: #2c3e50;
             text-align: left;
-            position: relative;
+            padding-left: 20px;
         }
 
         .answer-btn:hover:not(:disabled) {
-            border-color: #667eea;
-            background: #f5f7fa;
-            transform: translateX(5px);
+            background: linear-gradient(180deg, #f8f9fa 0%, #e8eaed 100%);
         }
 
         .answer-btn:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
+            cursor: default;
+            opacity: 0.8;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(180deg, #2ecc71 0%, #27ae60 100%);
             color: white;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
         }
 
         .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+            background: linear-gradient(180deg, #58d68d 0%, #2ecc71 100%);
         }
 
         .back-btn {
-            background: #e8eaf6;
-            color: #667eea;
+            background: linear-gradient(180deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
         }
 
         .back-btn:hover {
-            background: #d1d5f0;
+            background: linear-gradient(180deg, #b2babb 0%, #95a5a6 100%);
         }
 
         .question-box {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 2px solid #bdc3c7;
+        }
+
+        .question-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 15px auto;
+            display: block;
+            border: 3px solid #2c3e50;
+            border-radius: 5px;
         }
 
         .question-text {
-            font-size: 20px;
-            line-height: 1.6;
-            color: #333;
-            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #2c3e50;
+            font-weight: bold;
         }
 
         .progress-bar {
-            background: #e8eaf6;
-            height: 12px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            background: #bdc3c7;
+            height: 20px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 2px solid #95a5a6;
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(180deg, #2ecc71 0%, #27ae60 100%);
             height: 100%;
-            transition: width 0.5s ease;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            border-radius: 3px;
+            transition: width 0.3s;
         }
 
         .progress-text {
             text-align: center;
-            margin-bottom: 15px;
-            color: #666;
-            font-size: 14px;
-            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 13px;
+            font-weight: bold;
         }
 
         .result-card {
             text-align: center;
-            padding: 50px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            background: linear-gradient(180deg, #9b59b6 0%, #8e44ad 100%);
             color: white;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 3px solid #7d3c98;
         }
 
         .result-title {
-            font-size: 32px;
-            margin-bottom: 20px;
-            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
         }
 
         .result-score {
-            font-size: 72px;
-            font-weight: 700;
-            margin: 25px 0;
-            text-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.3);
         }
 
         .result-desc {
-            font-size: 18px;
-            margin-top: 20px;
-            line-height: 1.6;
+            font-size: 16px;
+            margin-top: 15px;
         }
 
         .input-box {
             width: 100%;
-            padding: 18px;
+            padding: 12px;
             margin: 15px 0;
-            border: 3px solid #e8eaf6;
-            border-radius: 12px;
-            font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 15px;
         }
 
         .input-box:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            border-color: #3498db;
         }
 
         .leaderboard-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            margin: 12px 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .leaderboard-item:hover {
-            transform: translateX(5px);
+            padding: 15px;
+            margin: 8px 0;
+            background: #ecf0f1;
+            border-radius: 5px;
+            border: 2px solid #bdc3c7;
         }
 
         .leaderboard-rank {
-            font-size: 28px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            min-width: 50px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #e74c3c;
+            min-width: 40px;
         }
 
         .leaderboard-name {
             flex: 1;
-            padding: 0 20px;
-            font-weight: 600;
-            color: #333;
+            padding: 0 15px;
+            font-weight: bold;
+            color: #2c3e50;
         }
 
         .leaderboard-score {
             background: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 700;
-            color: #667eea;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #e74c3c;
+            border: 2px solid #bdc3c7;
         }
 
         .loading {
             text-align: center;
-            padding: 40px;
-            color: #666;
-            font-weight: 600;
+            padding: 30px;
+            color: #7f8c8d;
+            font-weight: bold;
         }
 
         .emoji {
-            font-size: 64px;
-            margin-bottom: 20px;
-            animation: bounce 1s ease infinite;
+            font-size: 50px;
+            margin-bottom: 15px;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .api-section {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .api-section h3 {
+            color: #856404;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .api-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .api-toggle input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
         }
 
         @media (max-width: 600px) {
             .header h1 {
-                font-size: 28px;
+                font-size: 22px;
             }
             .question-text {
-                font-size: 18px;
-            }
-            .result-score {
-                font-size: 56px;
-            }
-            .content {
-                padding: 30px 20px;
+                font-size: 14px;
             }
         }
     </style>
@@ -416,6 +361,7 @@
                 </div>
                 <div class="question-box">
                     <div class="question-text" id="questionText"></div>
+                    <img id="questionImage" class="question-image" style="display: none;">
                 </div>
                 <div id="answersContainer"></div>
             </div>
@@ -449,8 +395,21 @@
                 <div class="question-box">
                     <p class="question-text">⚙️ Settings</p>
                 </div>
+                
+                <div class="api-section">
+                    <h3>🤖 AI Generated Questions (Optional)</h3>
+                    <div class="api-toggle">
+                        <input type="checkbox" id="useOpenAI" onchange="toggleOpenAI()">
+                        <label for="useOpenAI">Use OpenAI to generate questions</label>
+                    </div>
+                    <input type="text" id="openaiKey" class="input-box" placeholder="OpenAI API Key (optional)" style="display: none;">
+                    <p style="font-size: 12px; color: #856404; margin-top: 10px;">
+                        OpenAI API is NOT free, but very cheap (~$0.001 per quiz). Get your key at platform.openai.com
+                    </p>
+                </div>
+
                 <button class="menu-btn" onclick="resetProgress()">🗑️ Reset Progress</button>
-                <p style="text-align: center; color: #666; margin: 20px 0; font-size: 14px;">
+                <p style="text-align: center; color: #7f8c8d; margin: 15px 0; font-size: 13px;">
                     This will delete your local progress and stats
                 </p>
                 <button class="back-btn" onclick="showMenu()">← Back</button>
@@ -466,77 +425,92 @@
             {
                 q: "You're trying to make instant ramen. What's your first move?",
                 options: ["Read the instructions", "Add water and microwave it", "Just eat it dry with the seasoning", "Google 'how to make ramen'"],
-                timmy: [2, 3]
+                timmy: [2, 3],
+                image: "" // Add your image URL here like: "https://images.paramount.tech/path/mgid:file:gsp:entertainment-assets:/sps/shared/characters/alter-egos/texans-vs-mexicans-border-patrol-timmy.png"
             },
             {
                 q: "Someone says 'break a leg' before your presentation. What do you do?",
                 options: ["Say thanks and give your presentation", "Ask them why they want you to get hurt", "Literally avoid breaking your leg all day", "Report them to HR"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: ""
             },
             {
                 q: "You need to be somewhere in 30 minutes and it's a 10-minute drive. When do you leave?",
                 options: ["In 15-20 minutes", "Right now immediately", "In 29 minutes", "Never, I'll just be late"],
-                timmy: [2, 3]
+                timmy: [2, 3],
+                image: ""
             },
             {
                 q: "The recipe says 'let it simmer for 20 minutes'. What does that mean to you?",
                 options: ["Cook it on low heat for 20 minutes", "Stare at it for 20 minutes", "Turn the heat to max for faster cooking", "Set a timer for exactly 20 minutes and leave the house"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: ""
             },
             {
                 q: "You see a 'Wet Floor' sign. What's your reaction?",
                 options: ["Walk carefully around it", "Test how wet it is with my foot", "Ignore it completely", "Take a picture of it for some reason"],
-                timmy: [1, 3]
+                timmy: [1, 3],
+                image: ""
             },
             {
                 q: "Your phone battery is at 1%. What do you do?",
                 options: ["Plug it in immediately", "Keep using it to see how long it lasts", "Start an important phone call", "Take a bunch of photos"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: "https://images.paramount.tech/path/mgid:file:gsp:entertainment-assets:/sps/shared/characters/alter-egos/texans-vs-mexicans-border-patrol-timmy.png"
             },
             {
                 q: "The instructions say 'Some assembly required'. Your move?",
                 options: ["Read the instructions carefully", "Just start putting pieces together randomly", "Throw away the instructions immediately", "Call someone to do it for me"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: "https://images.paramount.tech/path/mgid:file:gsp:entertainment-assets:/sps/shared/characters/alter-egos/texans-vs-mexicans-border-patrol-timmy.png"
             },
             {
                 q: "You're at a buffet. How do you approach it?",
                 options: ["Take small portions of things I want to try", "Fill my plate until it's a mountain", "Take one of everything", "Ask for a to-go box before I start"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: "https://images.paramount.tech/path/mgid:file:gsp:entertainment-assets:/sps/shared/characters/alter-egos/texans-vs-mexicans-border-patrol-timmy.png"
             },
             {
                 q: "Someone texts you 'K'. What does it mean?",
                 options: ["They're acknowledging what I said", "They're furious with me", "It's a typo", "It's a secret code"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: ""
             },
             {
                 q: "You're told to 'just be yourself' at a job interview. What do you do?",
                 options: ["Be professional but authentic", "Show up in pajamas", "Tell them my entire life story", "Bring my pets"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: ""
             },
             {
                 q: "The milk expires tomorrow. What's your plan?",
                 options: ["Use it today or tomorrow", "Throw it away right now", "Ignore the date completely", "Freeze it for later"],
-                timmy: [1, 3]
+                timmy: [1, 3],
+                image: ""
             },
             {
                 q: "You see 'Please knock before entering'. What do you do?",
                 options: ["Knock and wait for a response", "Knock while opening the door", "Just walk in", "Stand outside forever"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: ""
             },
             {
                 q: "Your GPS says 'Turn left in 500 feet'. When do you turn?",
                 options: ["When I see the turn or reach 500 feet", "Immediately", "Count out 500 footsteps", "Panic and miss the turn"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: ""
             },
             {
                 q: "The oven is preheated. What does that mean?",
                 options: ["It's reached the temperature I set", "It's thinking about getting hot", "It's broken", "I need to heat it more"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: ""
             },
             {
                 q: "Someone says 'sleep on it' about a decision. What do you do?",
                 options: ["Think about it overnight before deciding", "Put the decision under my pillow", "Take a nap right now", "Write it down and literally sleep on the paper"],
-                timmy: [1, 2, 3]
+                timmy: [1, 2, 3],
+                image: ""
             }
         ];
 
@@ -545,6 +519,8 @@
         let score = 0;
         let playerName = '';
         let timmyPoints = 0;
+        let useOpenAI = false;
+        let openaiKey = '';
 
         window.onload = function() {
             loadProgress();
@@ -557,14 +533,33 @@
                 const data = JSON.parse(saved);
                 playerName = data.playerName || '';
                 timmyPoints = data.timmyPoints || 0;
+                useOpenAI = data.useOpenAI || false;
+                openaiKey = data.openaiKey || '';
+                
+                document.getElementById('useOpenAI').checked = useOpenAI;
+                document.getElementById('openaiKey').value = openaiKey;
+                if (useOpenAI) {
+                    document.getElementById('openaiKey').style.display = 'block';
+                }
             }
         }
 
         function saveProgress() {
             localStorage.setItem('timmyProgress', JSON.stringify({
                 playerName: playerName,
-                timmyPoints: timmyPoints
+                timmyPoints: timmyPoints,
+                useOpenAI: useOpenAI,
+                openaiKey: openaiKey
             }));
+        }
+
+        function toggleOpenAI() {
+            useOpenAI = document.getElementById('useOpenAI').checked;
+            document.getElementById('openaiKey').style.display = useOpenAI ? 'block' : 'none';
+            if (useOpenAI) {
+                openaiKey = document.getElementById('openaiKey').value;
+            }
+            saveProgress();
         }
 
         function updateStats() {
@@ -588,6 +583,8 @@
 
         function showSettings() {
             showScreen('settingsScreen');
+            openaiKey = document.getElementById('openaiKey').value;
+            saveProgress();
         }
 
         function resetProgress() {
@@ -595,12 +592,17 @@
                 localStorage.removeItem('timmyProgress');
                 playerName = '';
                 timmyPoints = 0;
+                useOpenAI = false;
+                openaiKey = '';
+                document.getElementById('useOpenAI').checked = false;
+                document.getElementById('openaiKey').value = '';
+                document.getElementById('openaiKey').style.display = 'none';
                 updateStats();
                 alert('Progress deleted successfully!');
             }
         }
 
-        function startQuiz() {
+        async function startQuiz() {
             const name = document.getElementById('nameInput').value.trim();
             if (!name) {
                 alert('Please enter your name!');
@@ -610,9 +612,70 @@
             saveProgress();
             updateStats();
             
-            generateQuestions();
             showScreen('quizScreen');
-            showQuestion();
+            
+            if (useOpenAI && openaiKey) {
+                document.getElementById('questionText').textContent = 'Generating AI questions... 🤖';
+                document.getElementById('answersContainer').innerHTML = '<div class="loading">This may take a moment...</div>';
+                await generateOpenAIQuestions();
+            } else {
+                generateQuestions();
+                showQuestion();
+            }
+        }
+
+        async function generateOpenAIQuestions() {
+            try {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${openaiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [{
+                            role: 'user',
+                            content: `Generate 10 unique, funny quiz questions to determine if someone is a "timmy" (silly/makes dumb decisions). Each question should have 4 answer options, with 2-3 being "timmy" answers (silly/wrong choices).
+
+Format as JSON array ONLY, no other text:
+[
+  {
+    "q": "question text",
+    "options": ["option1", "option2", "option3", "option4"],
+    "timmy": [1, 2]
+  }
+]
+
+Make questions about: common sense fails, overthinking simple things, misunderstanding sayings, funny logic fails. Keep it lighthearted and fun!`
+                        }],
+                        temperature: 0.9
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error.message);
+                }
+                
+                const text = data.choices[0].message.content;
+                const jsonMatch = text.match(/\[[\s\S]*\]/);
+                
+                if (jsonMatch) {
+                    currentQuestions = JSON.parse(jsonMatch[0]);
+                    currentQuestion = 0;
+                    score = 0;
+                    showQuestion();
+                } else {
+                    throw new Error('Failed to parse AI questions');
+                }
+            } catch (error) {
+                console.error('OpenAI Error:', error);
+                alert('Failed to generate AI questions. Using default questions instead!');
+                generateQuestions();
+                showQuestion();
+            }
         }
 
         function generateQuestions() {
@@ -629,6 +692,14 @@
             document.getElementById('questionNum').textContent = currentQuestion + 1;
             document.getElementById('progressFill').style.width = progress + '%';
             document.getElementById('questionText').textContent = q.q;
+            
+            const imgElement = document.getElementById('questionImage');
+            if (q.image && q.image.trim() !== '') {
+                imgElement.src = q.image;
+                imgElement.style.display = 'block';
+            } else {
+                imgElement.style.display = 'none';
+            }
             
             const container = document.getElementById('answersContainer');
             container.innerHTML = '';
@@ -701,20 +772,52 @@
 
         async function saveToLeaderboard(timmyScore) {
             try {
-                await fetch(`${SUPABASE_URL}/rest/v1/leaderboard`, {
-                    method: 'POST',
+                // First, try to update existing player
+                const checkResponse = await fetch(`${SUPABASE_URL}/rest/v1/leaderboard?player_name=eq.${encodeURIComponent(playerName)}`, {
                     headers: {
-                        'Content-Type': 'application/json',
                         'apikey': SUPABASE_KEY,
-                        'Authorization': `Bearer ${SUPABASE_KEY}`,
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify({
-                        player_name: playerName,
-                        timmy_score: timmyScore,
-                        total_quizzes: timmyPoints
-                    })
+                        'Authorization': `Bearer ${SUPABASE_KEY}`
+                    }
                 });
+                
+                const existingData = await checkResponse.json();
+                
+                if (existingData && existingData.length > 0) {
+                    // Update existing player - keep highest score
+                    const existing = existingData[0];
+                    const newScore = Math.max(existing.timmy_score, timmyScore);
+                    const newQuizCount = existing.total_quizzes + 1;
+                    
+                    await fetch(`${SUPABASE_URL}/rest/v1/leaderboard?id=eq.${existing.id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': SUPABASE_KEY,
+                            'Authorization': `Bearer ${SUPABASE_KEY}`,
+                            'Prefer': 'return=minimal'
+                        },
+                        body: JSON.stringify({
+                            timmy_score: newScore,
+                            total_quizzes: newQuizCount
+                        })
+                    });
+                } else {
+                    // Create new player
+                    await fetch(`${SUPABASE_URL}/rest/v1/leaderboard`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': SUPABASE_KEY,
+                            'Authorization': `Bearer ${SUPABASE_KEY}`,
+                            'Prefer': 'return=minimal'
+                        },
+                        body: JSON.stringify({
+                            player_name: playerName,
+                            timmy_score: timmyScore,
+                            total_quizzes: 1
+                        })
+                    });
+                }
             } catch (error) {
                 console.log('Leaderboard save failed:', error);
             }
